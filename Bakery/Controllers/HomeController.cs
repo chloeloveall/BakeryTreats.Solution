@@ -13,5 +13,16 @@ namespace Bakery.Controllers
       _db = db;
     }
 
+    [HttpGet("/")]
+    public ActionResult Index()
+    {
+      var flavors = _db.Flavors.ToList();
+      var treats = _db.Treats.ToList();
+      Dictionary<string, object> model = new Dictionary<string, object> {};
+      model.Add("flavors", flavors);
+      model.Add("treats", treats);
+      return View(model);
+    }
+
   }
 }

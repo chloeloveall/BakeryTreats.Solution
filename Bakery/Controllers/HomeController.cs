@@ -24,5 +24,10 @@ namespace Bakery.Controllers
       return View(model);
     }
 
+    public ActionResult About()
+    {
+      return View();
+    }
+
   }
 }

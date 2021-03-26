@@ -44,5 +44,10 @@ namespace Bakery.Controllers
       }
     }
 
+    public ActionResult Login()
+    {
+      return View();
+    }
+
   }
 }

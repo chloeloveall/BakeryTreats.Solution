@@ -30,7 +30,7 @@ namespace Bakery
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
 
       services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<FactoryContext>()
+                .AddEntityFrameworkStores<BakeryContext>()
                 .AddDefaultTokenProviders();
 
       services.Configure<IdentityOptions>(options =>

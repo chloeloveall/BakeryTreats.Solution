@@ -13,6 +13,8 @@ namespace Bakery.Models
 
     public int TreatId { get; set; }
     
+    [Required(ErrorMessage = "Please enter a treat name")]
+    [Display(Name="Treat")]
     public string TreatName { get; set; }
 
     public virtual ICollection<FlavorTreat> JoinEntities { get; }

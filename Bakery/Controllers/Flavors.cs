@@ -31,6 +31,11 @@ namespace Bakery.Controllers
     List<Flavor> model = _db.Flavors.ToList();
     return View(_db.Flavors.OrderBy(m=>m.FlavorName).ToList());
     }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
     
   }
 }

@@ -36,6 +36,23 @@ namespace Bakery.Controllers
     {
       return View();
     }
+
+    [HttpPost]
+    public async Task<ActionResult> Create(Flavor flavor)
+    {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      flavor.User = currentUser;
+      _db.Flavors.Add(flavor);
+      _db.SaveChanges();
+      if (ModelState.IsValid)
+      {  
+        _db.Flavors.Add(flavor);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
+      return View(flavor);
+    }
     
   }
 }

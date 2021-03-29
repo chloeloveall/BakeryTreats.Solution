@@ -57,5 +57,21 @@ namespace Bakery.Controllers
       return View(thisTreat);
     }
 
+    [HttpPost]
+    public ActionResult Edit(Treat treat, int flavorId)
+    {
+      bool matches = _db.FlavorTreat.Any(x => x.TreatId == treat.TreatId && x.FlavorId == flavorId);
+      if (!matches && ModelState.IsValid)
+      {
+        if (flavorId != 0)
+        {
+          _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = flavorId, TreatId = treat.TreatId });
+        }
+      }
+      _db.Entry(treat).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
   }
 }

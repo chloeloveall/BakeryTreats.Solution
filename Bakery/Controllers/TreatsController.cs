@@ -24,5 +24,10 @@ namespace Bakery.Controllers
       return View(_db.Treats.OrderBy(m=>m.TreatName).ToList());
     }
 
+    public ActionResult Create()
+    {
+      return View();
+    }
+
   }
 }

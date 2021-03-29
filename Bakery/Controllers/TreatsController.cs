@@ -97,5 +97,23 @@ namespace Bakery.Controllers
       return RedirectToAction("Index");
     }
 
+    public async Task<IActionResult> Search(string searchString)
+    {
+      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "TreatName");
+      var search = from m in _db.Treats
+        select m;
+
+      if (!String.IsNullOrEmpty(searchString))
+      {
+        search = search.Where(s => s.TreatName.Contains(searchString));
+        return View(await Task.FromResult(search.ToList()));
+      }
+      else
+      {
+        List<Treat> model = _db.Treats.ToList();
+        return View(_db.Treats.OrderBy(m=>m.TreatName).ToList());
+      }
+    }
+
   }
 }

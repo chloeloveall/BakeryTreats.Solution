@@ -24,15 +24,5 @@ namespace Bakery.Controllers
       return View(model);
     }
 
-    public ActionResult About()
-    {
-      return View();
-    }
-
-    public ActionResult Contact()
-    {
-      return View();
-    }
-
   }
 }

@@ -118,7 +118,5 @@ namespace Bakery.Controllers
       }
     }
 
-    // search or sort by flavor?? 
-
   }
 }

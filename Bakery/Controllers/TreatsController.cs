@@ -1,4 +1,6 @@
 using Bakery.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Bakery.Controllers
 {
+  [Authorize]
   public class TreatsController : Controller
   {
     private readonly BakeryContext _db;
@@ -114,6 +117,8 @@ namespace Bakery.Controllers
         return View(_db.Treats.OrderBy(m=>m.TreatName).ToList());
       }
     }
+
+    // search or sort by flavor?? 
 
   }
 }

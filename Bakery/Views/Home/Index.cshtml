@@ -1,3 +1,58 @@
-@{
+@* @{
   Layout = "_Layout";
-}
+} *@
+
+@using Bakery.Models
+
+<main role="main">
+
+    <div class="container">
+        <a href='/treats' class="btn btn-warning btn-lg" role="button">Treats Portal</a>
+        <a href='/flavors' class="btn btn-warning btn-lg" role="button">Flavors Portal</a>
+        <p>@Html.ActionLink("Create an account", "Index", "Account")</p>
+      </p>
+    </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="deck-flex card-deck">
+        <div class="card-flex card col-md-5 card-style-home">
+          <h3 class="card-title">Treats</h3>
+          <div class="card-body">
+            @if (@Model["treats"].Count == 0)
+            {
+              <h3>No treats have been added yet!</h3>
+            } 
+            <ul>
+            @foreach(Treat treat in Model["treats"])
+            {
+              <div class="pad-group">
+                <li><span class="bold">@Html.ActionLink($"{treat.TreatName}", "Details", "Treats", new { id = treat.TreatId })</span></li>
+              </div>
+            }
+            </ul>
+          </div>
+        </div>
+        <div class="card-flex card col-md-5 card-style-home">
+          <h3 class="card-title">Flavors</h3>
+          <div class="card-body">
+            @if (@Model["flavors"].Count == 0)
+            {
+              <h3>No flavors have been added yet!</h3>
+            }
+            <ul>
+            @foreach(Flavor flavor in Model["flavors"])
+            {
+              <div class="pad-group">
+                <li><span class="bold">@Html.ActionLink($"{flavor.FlavorName}", "Details", "Flavors", new { id = flavor.FlavorId })</span></li>
+              </div>
+            }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+

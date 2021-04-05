@@ -26,10 +26,10 @@ namespace Bakery.Controllers
 
     public async Task<ActionResult> Index()
     {
-    var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-    var currentUser = await _userManager.FindByIdAsync(userId);
-    List<Flavor> model = _db.Flavors.ToList();
-    return View(_db.Flavors.OrderBy(m=>m.FlavorName).ToList());
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      List<Flavor> model = _db.Flavors.ToList();
+      return View(_db.Flavors.OrderBy(m=>m.FlavorName).ToList());
     }
 
     public ActionResult Create()
@@ -43,8 +43,6 @@ namespace Bakery.Controllers
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
       flavor.User = currentUser;
-      _db.Flavors.Add(flavor);
-      _db.SaveChanges();
       if (ModelState.IsValid)
       {  
         _db.Flavors.Add(flavor);

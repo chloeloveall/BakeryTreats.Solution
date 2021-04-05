@@ -1,3 +1,14 @@
 @{
   Layout = "_Layout";
 }
+
+@model Bakery.Models.Treat
+
+@using (Html.BeginForm())
+{
+  <h3>Delete Treat: @Html.DisplayFor(model => model.TreatName)</h3>
+
+  @Html.HiddenFor(model => model.TreatId)
+
+  <input type="submit" class="btn" value="Delete" />
+}

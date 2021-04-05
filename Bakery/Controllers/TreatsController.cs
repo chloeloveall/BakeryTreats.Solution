@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Bakery.Controllers
@@ -15,14 +16,18 @@ namespace Bakery.Controllers
   public class TreatsController : Controller
   {
     private readonly BakeryContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public TreatsController(BakeryContext db)
+    public TreatsController(UserManager<ApplicationUser> userManager, BakeryContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
 
-    public ActionResult Index()
+    public async Task<ActionResult> Index()
     {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
       List<Treat> model = _db.Treats.ToList();
       return View(_db.Treats.OrderBy(m=>m.TreatName).ToList());
     }
@@ -33,10 +38,13 @@ namespace Bakery.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Treat treat)
+    public async Task<ActionResult> Create(Treat treat)
     {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      treat.User = currentUser;
       if (ModelState.IsValid)
-      {
+      {  
         _db.Treats.Add(treat);
         _db.SaveChanges();
         return RedirectToAction("Index");

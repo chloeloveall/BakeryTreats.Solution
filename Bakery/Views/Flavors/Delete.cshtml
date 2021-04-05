@@ -1,3 +1,14 @@
 @{
   Layout = "_Layout";
 }
+
+@model Bakery.Models.Flavor
+
+@using (Html.BeginForm())
+{
+  <h3>Delete Flavor: @Html.DisplayFor(model => model.FlavorName)</h3>
+
+  @Html.HiddenFor(model => model.FlavorId)
+
+  <input type="submit" class="btn" value="Delete" />
+}

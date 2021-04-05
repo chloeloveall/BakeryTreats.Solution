@@ -37,11 +37,11 @@
 
 ## Description
 
-An [Epicodus](https://www.epicodus.com/) project to create an MVC web application to help a fictional bakery owner manage the company's treats and treat flavors. The owner can create, view, edit and delete available treats and treat flavors.
+An [Epicodus](https://www.epicodus.com/) project to create an MVC web application to help a fictional bakery owner manage the company's treats and treat flavors. The owner can create, view, edit and delete available treats and treat flavors. The home index page display lists of all current flavors and current treats.
 
 ## Preview
 
-Live preview with Heroku 
+Live preview - not yet deployed  
 
 ## Technologies Used
 
@@ -150,7 +150,10 @@ for support and
 
 ## Roadmap
 
-* 
+* Complete UI
+* Add additional model properties
+* Have separate roles for admins and logged-in users. Only admins should be able to add, update and delete.
+* Add an order form that only logged-in users can access. A logged-in user should be able to create, read, update and delete their own order.
 
 ### Design
 
@@ -189,6 +192,6 @@ Contributions are what make the open source community such an amazing place to b
 
 _Chloe Loveall <chloeloveall@protonmail.com>_
 
-![github followers](https://img.shields.io/github/followers/chloeloveall?style=social) &nbsp; ![github forks](https://img.shields.io/github/forks/chloeloveall/Bakery.Solution?label=Forks&style=social) &nbsp; ![github stars](https://img.shields.io/github/stars/chloeloveall/Bakery.Solution?style=social)
+![github followers](https://img.shields.io/github/followers/chloeloveall?style=social) &nbsp; ![github forks](https://img.shields.io/github/forks/chloeloveall/BakeryTreats.Solution?label=Forks&style=social) &nbsp; ![github stars](https://img.shields.io/github/stars/chloeloveall/BakeryTreats.Solution?style=social)
 
 [Back to Top](#table-of-contents)

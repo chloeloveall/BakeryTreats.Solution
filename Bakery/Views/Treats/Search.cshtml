@@ -1,3 +1,37 @@
 @{
   Layout = "_Layout";
 }
+
+@using Bakery.Models;
+@model List<Bakery.Models.Treat>;
+
+
+<h3>Search for Treats</h3>
+<form asp-controller="TreatsController" asp-action="SearchBy" method="get">
+  <div class="form-row"></div>
+    <label for="search">Search:</label>
+    <input type="text" name="searchString" class="form-control"/>
+    <input type="submit" class="btn" value="Filter" />
+  </div>
+</form>
+
+<div class="container">
+  @if (@Model.Count == 0)
+  {
+    <h3>No results found!</h3>
+  } 
+
+  @foreach(Treat treat in Model)
+  {
+    
+    <h3>@treat.TreatName</h3>
+    <div class="container-sm">
+      <button type="button" class="btn btn-sm">@Html.ActionLink($"View", "Details", new { id = treat.TreatId })</button>
+      <button type="button" class="btn btn-sm">@Html.ActionLink($"Edit", "Edit", new { id = treat.TreatId })</button>
+      <button type="button" class="btn btn-sm">@Html.ActionLink($"Delete", "Delete", new { id = treat.TreatId })</button>
+    </div>   
+  }
+
+  <p>@Html.ActionLink("Home", "Index", "Home")</p>
+  
+</div>

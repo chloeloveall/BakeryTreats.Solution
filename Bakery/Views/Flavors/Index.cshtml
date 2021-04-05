@@ -1,3 +1,26 @@
 @{
   Layout = "_Layout";
 }
+
+@using Bakery.Models;
+
+<h1>Flavors</h1>
+
+<a href='/flavors/search' class="btn btn-lg" role="button">Search by Flavor</a>
+<a href='/flavors/create' class="btn btn-lg" role="button">Add New Flavor</a>
+<a href='/' class="btn btn-lg" role="button">Home</a>
+
+@if (@Model.Count == 0)
+{
+  <h3>No flavors have been added yet!</h3>
+} 
+  @foreach(Flavor flavor in Model)
+  {
+    <h3>@flavor.FlavorName</h3>
+    <p>Description: @flavor.FlavorDescription</p>
+    <div class="container-sm">
+      <button type="button" class="btn btn-sm">@Html.ActionLink($"View", "Details", new { id = flavor.FlavorId })</button>
+      <button type="button" class="btn btn-sm">@Html.ActionLink($"Edit", "Edit", new { id = flavor.FlavorId })</button>
+      <button type="button" class="btn btn-sm">@Html.ActionLink($"Delete", "Delete", new { id = flavor.FlavorId })</button>
+    </div>
+  }

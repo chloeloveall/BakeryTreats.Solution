@@ -11,6 +11,8 @@ namespace Bakery.Models
       JoinEntities = new HashSet<FlavorTreat>();
     }
 
+    public virtual ApplicationUser User { get; set; }
+    
     public int TreatId { get; set; }
     
     [Required(ErrorMessage = "Please enter a treat name")]
